@@ -28,5 +28,25 @@ int main() {
     }
     fprintf(stderr, "Freeing the array\n");
     xfree(array);
+
+    fprintf(stderr, "Allocating large blocks\n");
+    int* largeBlock1 =
+        xmalloc(1000000 * sizeof(int));  // 4 bytes * 1,000,000 = 4MB
+    fprintf(stderr, "Large block 1 (4MB) has been allocated\n");
+    xfree(largeBlock1);
+    fprintf(stderr, "Large block 1 (4MB) has been freed\n");
+
+    int* largeBlock2 =
+        xmalloc(30000000 * sizeof(int));  // 4 bytes * 30,000,000 = 120MB
+    fprintf(stderr, "Large block 2 (120MB) has been allocated\n");
+    xfree(largeBlock2);
+    fprintf(stderr, "Large block 2 (120MB) has been freed\n");
+
+    int* largeBlock3 =
+        xmalloc(250000000 * sizeof(int));  // 4 bytes * 250,000,000 = 1GB
+    fprintf(stderr, "Large block 3 (1GB) has been allocated\n");
+    xfree(largeBlock3);
+    fprintf(stderr, "Large block 3 (1GB) has been freed\n");
+
     return 0;
 }
